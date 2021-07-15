@@ -1,0 +1,291 @@
+/* Сброс стилей */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+ul[class], ol[class] {
+  padding: 0;
+}
+
+body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+ul[class], ol[class] {
+  list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #4ac4c5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  outline: none;
+  border: 0;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img {
+  margin: 0 2rem;
+}
+
+.header .logo h2 {
+  color: #4ac4c5;
+}
+
+.header .profile {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.profile .edit {
+  margin-right: 1rem;
+}
+
+.profile .edit:hover {
+  background: url('../img/edit-hover.png');
+}
+
+.profile .logout:hover {
+  background: url('../img/log-out-hover.png');
+}
+
+/* main */
+
+/* users */
+
+.main {
+  margin-top: 5rem;
+}
+
+.main .main-flex {
+  display: flex;
+}
+
+.main .users {
+  width: 25%;
+}
+
+.users .user-status {
+  display: flex;
+  justify-content: space-between;
+  margin: .3rem .5rem;
+}
+
+.users .user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.user .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1rem;
+  margin: .1rem 0;
+}
+
+.user .online {
+  width: 16px;
+  height: 16px;
+  background: url('../img/user-online.png');
+  position: absolute;
+  right: 5%;
+}
+
+.user .offline {
+  width: 16px;
+  height: 16px;
+  background: url('../img/user-offline.png');
+  position: absolute;
+  right: 5%;
+}
+
+.users .user:hover {
+  background: lightgray;
+  transition: all .3s;
+}
+
+.user .user-logo {
+  width: 40px;
+  margin-right: 1.2rem;
+}
+
+/* correspondence */
+
+/* all-chats */
+
+.main .correspondence {
+  margin: 0 0 5rem 2rem;
+  width: 75%;
+}
+
+.correspondence .all-chats {
+  display: flex;
+}
+
+.all-chats .chat {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid lightgrey;
+  border-radius: .2rem;
+  padding: .3rem 2rem;
+  cursor: pointer;
+}
+
+.all-chats .chat:hover {
+  background: lightgrey;
+  transition: all .3s;
+}
+
+.all-chats .active-chat {
+  background: lightgrey;
+}
+
+.all-chats .other-chat img[alt="close-chat"] {
+  display: none;
+}
+
+.all-chats .other-chat:hover img[alt="close-chat"] {
+  display: block;
+}
+
+.all-chats .other-chat img[alt="close-chat"] {
+  width: 11px;
+  position: absolute;
+  right: 3%;
+}
+
+.all-chats .chat h5 {
+  margin: 0;
+}
+
+/* messages */
+
+.messages {
+  min-height: 25rem;
+  margin-top: .2rem;
+  border: 2px solid lightgrey;
+  border-radius: .5rem;
+  padding: 1rem 4rem 1rem 1rem;
+  background: rgba(132, 43, 170, .2);
+}
+
+.messages .user-message {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.messages .user-message p {
+  margin-left: .4rem;
+}
+
+/* enter-message */
+
+.enter-message textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 5rem;
+  margin-top: 1rem;
+  padding: .5rem;
+  border: 2px solid lightgrey;
+  border-radius: .5rem;
+  opacity: .5;
+}
+
+.enter-message textarea:focus {
+  opacity: 1;
+  border: 2px solid green;
+  transition: all .3s;
+}
+
+.enter-message .modification {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: .3rem 0 1rem 0;
+}
+
+.enter-message .modification img {
+  width: 25px;
+  margin: 0 .2rem;
+  padding: .2rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.enter-message .modification img:hover {
+  background: lightgrey;
+  transition: all .3s;
+}
+
+.enter-message .more-info {
+  border: 2px solid green;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.enter-message .more-info h5 {
+  font-style: italic;
+  margin: .3rem 0;
+}
+
+.enter-message .more-info span {
+  margin-left: .4rem;
+}
+
+.more-info .send-message button {
+  background: #4ac4c5;
+  color: white;
+  padding: .5rem 4rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  opacity: .7;
+}
+
+.more-info .send-message button:hover {
+  opacity: 1;
+  transition: all .3s;
+}
