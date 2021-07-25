@@ -28,6 +28,7 @@ ul[class], ol[class] {
 a {
   color: black;
   text-decoration: none;
+  transition: all .1s;
 }
 
 a:hover {
@@ -70,6 +71,10 @@ input, button, textarea, select {
   margin-top: 2rem;
 }
 
+.time .nickname {
+  color: #4ac4c5;
+}
+
 .header .profile {
   display: flex;
   margin-top: 1rem;
@@ -92,7 +97,7 @@ input, button, textarea, select {
 /* users */
 
 .main {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .main .main-flex {
@@ -101,6 +106,8 @@ input, button, textarea, select {
 
 .main .users {
   width: 25%;
+  height: 25.5rem;
+  overflow-y: auto;
 }
 
 .users .user-status {
@@ -120,7 +127,7 @@ input, button, textarea, select {
 }
 
 .users .user.passive {
-  opacity: .5;
+  opacity: .4;
 }
 
 .user .info {
@@ -161,7 +168,7 @@ input, button, textarea, select {
 /* all-chats */
 
 .main .correspondence {
-  margin: -17.5rem 0 5rem 2rem;
+  margin: -16.5rem 0 0 2rem;
   width: 75%;
 }
 
@@ -209,7 +216,8 @@ input, button, textarea, select {
 /* messages */
 
 .messages {
-  min-height: 31.7rem;
+  height: 23rem;
+  overflow-y: auto;
   margin-top: .2rem;
   border: 2px solid lightgrey;
   border-radius: .5rem;
@@ -217,9 +225,18 @@ input, button, textarea, select {
   background: rgba(0, 100, 0, .2);
 }
 
+.messages::-webkit-scrollbar {
+  width: .4rem;
+}
+
+.messages::-webkit-scrollbar-thumb {
+ background-color: #4ac4c5;
+ border-radius: .5rem;
+}
+
 .messages .user-message {
   display: flex;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .messages .user-message p {
@@ -231,7 +248,9 @@ input, button, textarea, select {
 .enter-message textarea {
   width: 100%;
   max-width: 100%;
+  min-width: 100%;
   min-height: 5rem;
+  max-height: 15rem;
   margin-top: 1rem;
   padding: .5rem;
   border: 2px solid lightgrey;
