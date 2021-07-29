@@ -1,4 +1,4 @@
-import render from '../js/render.js';
+import render from './renderChat.js';
 
 export default function login() {
   const loginBtn = document.querySelector('.login .change-form a');

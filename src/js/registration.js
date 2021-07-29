@@ -1,4 +1,4 @@
-import render from '../js/render.js';
+import render from './renderChat.js';
 
 export default function regitstration() {
   const registrationBtn = document.querySelector('.registration .change-form a');
@@ -9,7 +9,6 @@ export default function regitstration() {
     document.querySelector('.registration-login.login').style.display = 'block';
   }
   
-
   const checkRegistration = (e) => {
     e.preventDefault();
 
