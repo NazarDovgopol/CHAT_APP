@@ -1,42 +1,115 @@
 import logoUser from '../images/logo-user.png';
+import { API } from './getServer';
+import closeChat from '../images/close-chat.png';
 
-export default function renderUsers() {
+let usersLength = 0;
+
+export default function renderUsers(value) {
+  if (value === 0) {
+    usersLength = 0;
+  }
+
   const allUsers = document.querySelector('.users');
 
-  fetch('https://studentschat.herokuapp.com/users')
+  fetch(`${API}/users`)
     .then(data => data.json())
     .then(users => {
-      const userStatusOnline = document.querySelector('.user-status-online');
-      const userStatusOffnline = document.querySelector('.user-status-offline');
-      const arrActive = [];
-      const arrPassive = [];
+      if (usersLength == users.length) {
+        const userStatusOnline = document.querySelector('.user-status-online');
+        const userStatusOffnline = document.querySelector('.user-status-offline');
+        const arrActive = [];
+        const arrPassive = [];
 
-      users.forEach(user => {
-        if (user.status === 'active') {
-          arrActive.push(user);
-        } else {
-          arrPassive.push(user);
-        }
-      })
+        users.forEach(user => {
+          if (user.status === 'active') {
+            arrActive.push(user);
+          } else {
+            arrPassive.push(user);
+          }
+        })
 
-      userStatusOnline.textContent = `Online: ${arrActive.length}`;
-      userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
+        userStatusOnline.textContent = `Online: ${arrActive.length}`;
+        userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
 
-      const arrAllUsers = arrActive.concat(arrPassive);
+      } else if (usersLength == users.length - 1) {
+        const userStatusOnline = document.querySelector('.user-status-online');
+        const userStatusOffnline = document.querySelector('.user-status-offline');
+        const arrActive = [];
+        const arrPassive = [];
 
-      arrAllUsers.forEach(user => {
+        users.forEach(user => {
+          if (user.status === 'active') {
+            arrActive.push(user);
+          } else {
+            arrPassive.push(user);
+          }
+        })
+
+        userStatusOnline.textContent = `Online: ${arrActive.length}`;
+        userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
+
         const item = document.createElement('div');
-        item.classList.add('user', user.status === 'active' ? 'active' : 'passive');
+        item.classList.add('user', users[users.length - 1].status === 'active' ? 'active' : 'passive');
 
         item.innerHTML = `
           <div class="info">
             <img src=${logoUser} alt="user" class="user-logo">
-            <h3 class="name-user" class="user-name">${user.username}</h3>
+            <h3 class="name-user" class="user-name">${users[users.length - 1].username}</h3>
           </div>
-          <div class=${user.status === 'active' ? 'online' : 'offline'}></div>
+          <div class=${users[users.length - 1].status === 'active' ? 'online' : 'offline'}></div>
         `
+        allUsers.prepend(item);
+
+      } else {
+        const userStatusOnline = document.querySelector('.user-status-online');
+        const userStatusOffnline = document.querySelector('.user-status-offline');
+        const arrActive = [];
+        const arrPassive = [];
+  
+        users.forEach(user => {
+          if (user.status === 'active') {
+            arrActive.push(user);
+          } else {
+            arrPassive.push(user);
+          }
+        })
+  
+        userStatusOnline.textContent = `Online: ${arrActive.length}`;
+        userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
+  
+        const arrAllUsers = arrActive.concat(arrPassive);
         
-        allUsers.append(item);
-      })
+        arrAllUsers.forEach(user => {
+          const item = document.createElement('div');
+          item.classList.add('user', user.status === 'active' ? 'active' : 'passive');
+  
+          item.innerHTML = `
+            <div class="info">
+              <img src=${logoUser} alt="user" class="user-logo">
+              <h3 class="name-user" class="user-name">${user.username}</h3>
+            </div>
+            <div class=${user.status === 'active' ? 'online' : 'offline'}></div>
+          `
+
+          item.addEventListener('click', () => {
+            const newChat = document.querySelector('.all-chats');
+            const itemChat = document.createElement('div');
+            itemChat.classList.add('chat', 'other-chat');
+
+            itemChat.innerHTML = `
+              <h5>${user.username}</h5>
+              <button><img src=${closeChat} alt="close-chat"></button>
+              
+            `
+            newChat.append(itemChat);
+            itemChat.querySelector('button').addEventListener('click', () => {
+              itemChat.remove();
+            })
+          })
+
+          allUsers.append(item);
+        })
+      }
+      usersLength = users.length;
     })
 }

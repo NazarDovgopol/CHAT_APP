@@ -13,7 +13,7 @@ import onlineTimeUser from './onlineTimeUser';
 import localTimeUser from './localTimeUser';
 import logOutFunc from './logOut';
 
-const render = ({ username }) => {
+const renderChat = ({ username }) => {
   document.querySelector('.body').innerHTML = `
     <header class="header">
     <div class="logo">
@@ -34,24 +34,18 @@ const render = ({ username }) => {
     </header>
     <main class="main">
     <div class="main-flex">
-      <section class="users">
-        <div class="user-status">
-          <i><h3 class="user-status-online"></h3></i>
-          <i><h3 class="user-status-offline"></h3></i>
-        </div>
-      </section>
+    <section class="all-info-users">
+      <div class="user-status">
+        <i><h3 class="user-status-online"></h3></i>
+        <i><h3 class="user-status-offline"></h3></i>
+      </div>
+      <div class="users">
+      </div>
+    </section>
       <section class="correspondence">
         <div class="all-chats">
           <div class="chat active-chat">
             <h5>Main chat</h5>
-          </div>
-          <div class="chat other-chat">
-            <h5>Nazar Dovgopol <span>(2)</span></h5>
-            <img src=${closeChat} alt="close-chat">
-          </div>
-          <div class="chat other-chat">
-            <h5>Nazar Dovgopol <span>(2)</span></h5>
-            <img src=${closeChat} alt="close-chat">
           </div>
         </div>
         <section class="messages">
@@ -80,18 +74,19 @@ const render = ({ username }) => {
     </div>
     </main>
   `
+  renderMessages(0);
+  renderUsers(0);
 
-  renderUsers();
-  renderMessages();
-  onlineTimeUser();
-  localTimeUser();
-
-  setInterval(renderMessages, 2000);
+  localStorage.setItem('renderMessages', setInterval(renderMessages, 2000));
+  localStorage.setItem('onlineTimeUser', setInterval(onlineTimeUser, 1000));
+  localStorage.setItem('localTimeUser', setInterval(localTimeUser, 1000));
+  localStorage.setItem('renderUsers', setInterval(renderUsers, 1000));
 
   const sendBtn = document.querySelector('.send-message button');
   sendBtn.addEventListener('click', sendMessage);
   document.querySelector('.enter-message textarea').addEventListener('keydown', (event) => {
     if (event.code == 'Enter') {
+      event.preventDefault();
       sendMessage();
     }
   });
@@ -100,4 +95,4 @@ const render = ({ username }) => {
   logOutBtn.addEventListener('click', logOutFunc);
 }
 
-export default render;
+export default renderChat;

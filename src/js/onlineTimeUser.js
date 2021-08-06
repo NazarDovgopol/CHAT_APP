@@ -1,29 +1,30 @@
+export const time = {
+  sec: 1,
+  min: 0,
+  hour: 0,
+}
+
 export default function onlineTimeUser() {
-  let sec = 1;
-  let min = 0;
-  let hour = 0;
-  const onlineTime = document.querySelector('.online-time');
+  const onlineTime = document.querySelector('.online-time'); 
 
-  setInterval(() => {
-    if (sec < 60) {
-      onlineTime.textContent = `
-        You are online for: 
-        ${hour !== 0 ? `${hour}h` : ''}
-        ${min !== 0 ? `${min}m` : ''} 
-        ${sec}s
-      `;
-      sec++;
-    } 
-    
-    if (sec == 60) {
-      sec = 0;
-      min++;
-    }
+  if (time.sec < 60) {
+    onlineTime.textContent = `
+      You are online for: 
+      ${time.hour !== 0 ? `${time.hour}h` : ''}
+      ${time.min !== 0 ? `${time.min}m` : ''} 
+      ${time.sec}s
+    `;
+    time.sec++;
+  } 
+  
+  if (time.sec == 60) {
+    time.sec = 0;
+    time.min++;
+  }
 
-    if (min == 60) {
-      sec = 0;
-      min = 0;
-      hour++;
-    }    
-  }, 1000);
+  if (time.min == 60) {
+    time.sec = 0;
+    time.min = 0;
+    time.hour++;
+  }
 }

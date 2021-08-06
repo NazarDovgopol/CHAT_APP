@@ -116,13 +116,13 @@ input, button, textarea, select {
   display: flex;
 }
 
-.main .users {
+.main .all-info-users {
   width: 25%;
   height: 25.5rem;
   overflow-y: auto;
 }
 
-.users .user-status {
+.all-info-users .user-status {
   display: flex;
   justify-content: space-between;
   margin: .3rem .5rem;
@@ -186,6 +186,7 @@ input, button, textarea, select {
 
 .correspondence .all-chats {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .all-chats .chat {
@@ -207,18 +208,24 @@ input, button, textarea, select {
   background: lightgrey;
 }
 
-.all-chats .other-chat img[alt="close-chat"] {
+.all-chats .other-chat button {
   display: none;
+  background: none;
+  cursor: pointer;
 }
 
-.all-chats .other-chat:hover img[alt="close-chat"] {
+.all-chats .other-chat:hover button {
   display: block;
 }
 
-.all-chats .other-chat img[alt="close-chat"] {
-  width: 11px;
+.all-chats .other-chat button {
   position: absolute;
-  right: 3%;
+  right: 0;
+}
+
+.all-chats .other-chat:hover img {
+  width: 11px;
+  height: 11px;
 }
 
 .all-chats .chat h5 {
@@ -239,13 +246,13 @@ input, button, textarea, select {
 
 .body::-webkit-scrollbar,
 .messages::-webkit-scrollbar,
-.users::-webkit-scrollbar {
+.all-info-users::-webkit-scrollbar {
   width: .4rem;
 }
 
 .body::-webkit-scrollbar-thumb,
 .messages::-webkit-scrollbar-thumb,
-.users::-webkit-scrollbar-thumb {
+.all-info-users::-webkit-scrollbar-thumb {
   background-color: #4ac4c5;
   border-radius: .5rem;
 }
@@ -264,10 +271,21 @@ input, button, textarea, select {
   background: rgba(178, 230, 176, 0.5);;
 }
 
-.messages .user-message:not(.user-message.just-now) p {
+.messages .user-message:not(.user-message.just-now) div {
   margin-left: .4rem;
 }
 
+.user-message .message-datetime {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-datetime .datetime {
+  display: flex;
+  justify-content: flex-end;
+  font-size: .6rem;
+  opacity: .5;
+}
 .user-message h4 {
   word-break: keep-all;
 }

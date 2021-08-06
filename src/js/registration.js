@@ -1,4 +1,5 @@
-import render from './renderChat.js';
+import renderChat from './renderChat.js';
+import { API } from './getServer';
 
 export default function regitstration() {
   const registrationBtn = document.querySelector('.registration .change-form a');
@@ -48,7 +49,7 @@ export default function regitstration() {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "https://studentschat.herokuapp.com/users/register");
+    xhr.open("POST", `${API}/users/register`);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({username, password}));
 
@@ -56,11 +57,11 @@ export default function regitstration() {
       const user = JSON.parse(xhr.response);
       if(xhr.status == 200) {
         window.localStorage.setItem('user', JSON.stringify(user));
-        render(user);
+        renderChat(user);
       }
     };
   }
 
-  registrationForm.addEventListener('submit', checkRegistration);
-  registrationBtn.addEventListener('click', loginFormHandler);
+  registrationForm?.addEventListener('submit', checkRegistration);
+  registrationBtn?.addEventListener('click', loginFormHandler);
 }
