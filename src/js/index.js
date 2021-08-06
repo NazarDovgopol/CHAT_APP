@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import '../style/style.scss';
 
-import regitstration from './registration';
+import registration from './registration';
 import login from './login';
 import renderForm from './renderForm';
 import renderChat from './renderChat.js';
@@ -13,5 +13,5 @@ if (localStorage.getItem('user')) {
   renderForm();
 }
 
-regitstration();
+registration();
 login();

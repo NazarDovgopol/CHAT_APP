@@ -1,7 +1,6 @@
 import logo from '../images/logo.png';
 import edit from '../images/edit.png';
 import logOut from '../images/log-out.png';
-import closeChat from '../images/close-chat.png';
 import textBold from '../images/text-bold.png';
 import textItalic from '../images/text-italic.png';
 import textDecoration from '../images/text-decoration.png';
@@ -60,10 +59,10 @@ const renderChat = ({ username }) => {
           </div>
           <div class="more-info">
             <div>
-              <h5>Количество символов:<span>54</span></h5>
-              <h5>Количество букв:<span>54</span></h5>
-              <h5>Количество невидемых символов:<span>54</span></h5>
-              <h5>Количество знаков припинания:<span>54</span></h5>
+              <h5 class="symbols">Количество символов: 0 </h5>
+              <h5 class="letters">Количество букв 0: </h5>
+              <h5 class="symbols-hidden">Количество невидемых символов: 0</h5>
+              <h5 class="signs">Количество знаков припинания: 0</h5>
             </div>
             <div class="send-message">
               <button>Send message</button>
@@ -84,8 +83,25 @@ const renderChat = ({ username }) => {
 
   const sendBtn = document.querySelector('.send-message button');
   sendBtn.addEventListener('click', sendMessage);
-  document.querySelector('.enter-message textarea').addEventListener('keydown', (event) => {
-    if (event.code == 'Enter') {
+
+  const textArea = document.querySelector('.enter-message textarea');
+  textArea.addEventListener('keydown', (event) => {
+    const symbols = document.querySelector('.symbols');
+    // const letters = document.querySelector('.letters');
+    // const symbolsHidden = document.querySelector('.symbols-hidden');
+    // const signs = document.querySelector('.signs');
+    let value = 0;
+
+    for (let i = 0; i <= textArea.value.length; i++) {
+      // берет первый символ
+      if (textArea.value.charCodeAt(textArea.value[i]) < 66) {
+        debugger
+        value++;
+        symbols.innerHTML = `Количество символов: ${value}`;
+      }
+    }
+
+    if (event.code === 'Enter') {
       event.preventDefault();
       sendMessage();
     }

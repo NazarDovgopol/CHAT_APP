@@ -17,12 +17,12 @@ export default function onlineTimeUser() {
     time.sec++;
   } 
   
-  if (time.sec == 60) {
+  if (time.sec === 60) {
     time.sec = 0;
     time.min++;
   }
 
-  if (time.min == 60) {
+  if (time.min === 60) {
     time.sec = 0;
     time.min = 0;
     time.hour++;

@@ -14,22 +14,22 @@ export default function login() {
     e.preventDefault();
   
     const checkPassword = document.querySelector('#user-password-login');
-    const alerrError = document.querySelector('.login .alert-error-hide');
+    const alertError = document.querySelector('.login .alert-error-hide');
   
     if (checkPassword.value.includes(' ')) {
-      alerrError.textContent = 'Поле не должно содержать пробелы';
-      alerrError.classList.add('alert-error-show');
+      alertError.textContent = 'Поле не должно содержать пробелы';
+      alertError.classList.add('alert-error-show');
   
-      setTimeout(() => alerrError.classList.remove('alert-error-show'), 3000);
+      setTimeout(() => alertError.classList.remove('alert-error-show'), 3000);
   
       return;
     }
   
     if (checkPassword.value.length < 4) {
-      alerrError.textContent = 'Введите больше 4 символов в пароле';
-      alerrError.classList.add('alert-error-show');
+      alertError.textContent = 'Введите больше 4 символов в пароле';
+      alertError.classList.add('alert-error-show');
   
-      setTimeout(() => alerrError.classList.remove('alert-error-show'), 3000);
+      setTimeout(() => alertError.classList.remove('alert-error-show'), 3000);
       
       return;
     }
@@ -45,9 +45,14 @@ export default function login() {
   
     xhr.onload = () => {
       const user = JSON.parse(xhr.response)[0];
-      if(xhr.status == 200) {
+      if(xhr.status === 200) {
         window.localStorage.setItem('user', JSON.stringify(user));
         renderChat(user);
+      } else {
+        alertError.textContent = 'Пароль или логин введены неправильно';
+        alertError.classList.add('alert-error-show');
+
+        setTimeout(() => alertError.classList.remove('alert-error-show'), 3000);
       }
     };
   }

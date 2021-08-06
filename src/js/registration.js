@@ -1,7 +1,7 @@
 import renderChat from './renderChat.js';
 import { API } from './getServer';
 
-export default function regitstration() {
+export default function registration() {
   const registrationBtn = document.querySelector('.registration .change-form a');
   const registrationForm = document.querySelector('.registration .form');
 
@@ -15,31 +15,31 @@ export default function regitstration() {
 
     const checkPassword = document.querySelector('#user-password-registration');
     const checkPasswordConfirm = document.querySelector('#user-password-confirm');
-    const alerrError = document.querySelector('.registration .alert-error-hide');
+    const alertError = document.querySelector('.registration .alert-error-hide');
 
     if (checkPassword.value.includes(' ')) {
-      alerrError.textContent = 'Поле не должно содержать пробелы';
-      alerrError.classList.add('alert-error-show');
+      alertError.textContent = 'Поле не должно содержать пробелы';
+      alertError.classList.add('alert-error-show');
 
-      setTimeout(() => alerrError.classList.remove('alert-error-show'), 3000);
+      setTimeout(() => alertError.classList.remove('alert-error-show'), 3000);
 
       return;
     }
 
     if (checkPassword.value.length < 4) {
-      alerrError.textContent = 'Введите больше 4 символов в пароле';
-      alerrError.classList.add('alert-error-show');
+      alertError.textContent = 'Введите больше 4 символов в пароле';
+      alertError.classList.add('alert-error-show');
 
-      setTimeout(() => alerrError.classList.remove('alert-error-show'), 3000);
+      setTimeout(() => alertError.classList.remove('alert-error-show'), 3000);
       
       return;
     }
 
     if (checkPassword.value !== checkPasswordConfirm.value) {
-      alerrError.textContent = 'Пароли не совпадают!';
-      alerrError.classList.add('alert-error-show');
+      alertError.textContent = 'Пароли не совпадают!';
+      alertError.classList.add('alert-error-show');
 
-      setTimeout(() => alerrError.classList.remove('alert-error-show'), 3000);
+      setTimeout(() => alertError.classList.remove('alert-error-show'), 3000);
 
       return;
     }
@@ -55,7 +55,7 @@ export default function regitstration() {
 
     xhr.onload = () => {
       const user = JSON.parse(xhr.response);
-      if(xhr.status == 200) {
+      if(xhr.status === 200) {
         window.localStorage.setItem('user', JSON.stringify(user));
         renderChat(user);
       }

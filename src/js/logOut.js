@@ -1,5 +1,5 @@
 import login from './login';
-import regitstration from './registration';
+import registration from './registration';
 import renderForm from './renderForm';
 import { time } from './onlineTimeUser';
 import { API } from './getServer';
@@ -20,7 +20,7 @@ export default function logOutFunc() {
   }));
 
   xhr.onload = () => {
-    if(xhr.status == 200) {
+    if(xhr.status === 200) {
       clearInterval(localStorage.getItem('renderMessages'));
       clearInterval(localStorage.getItem('onlineTimeUser'));
       clearInterval(localStorage.getItem('localTimeUser'));
@@ -33,7 +33,7 @@ export default function logOutFunc() {
       
       renderForm();
       login();
-      regitstration();
+      registration();
     }
   }
 }

@@ -7,7 +7,7 @@ export default function sendMessage() {
   const user = JSON.parse(window.localStorage.getItem('user'));
   const datetime = new Date().toISOString();
   debugger
-  if (textMessage.value != false) {
+  if (textMessage.value !== false) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", `${API}/messages`);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -18,7 +18,7 @@ export default function sendMessage() {
     }));
   
     xhr.onload = () => {
-      if(xhr.status == 200) {
+      if(xhr.status === 200) {
         renderMessages();
         textMessage.value = '';
       }

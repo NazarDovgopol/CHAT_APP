@@ -14,40 +14,24 @@ export default function renderUsers(value) {
   fetch(`${API}/users`)
     .then(data => data.json())
     .then(users => {
-      if (usersLength == users.length) {
-        const userStatusOnline = document.querySelector('.user-status-online');
-        const userStatusOffnline = document.querySelector('.user-status-offline');
-        const arrActive = [];
-        const arrPassive = [];
+      const userStatusOnline = document.querySelector('.user-status-online');
+      const userStatusOffline = document.querySelector('.user-status-offline');
+      const arrActive = [];
+      const arrPassive = [];
+      users.forEach(user => {
+        if (user.status === 'active') {
+          arrActive.push(user);
+        } else {
+          arrPassive.push(user);
+        }
+      })
 
-        users.forEach(user => {
-          if (user.status === 'active') {
-            arrActive.push(user);
-          } else {
-            arrPassive.push(user);
-          }
-        })
+      userStatusOnline.textContent = `Online: ${arrActive.length}`;
+      userStatusOffline.textContent = `Offline: ${arrPassive.length}`;
 
-        userStatusOnline.textContent = `Online: ${arrActive.length}`;
-        userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
-
-      } else if (usersLength == users.length - 1) {
-        const userStatusOnline = document.querySelector('.user-status-online');
-        const userStatusOffnline = document.querySelector('.user-status-offline');
-        const arrActive = [];
-        const arrPassive = [];
-
-        users.forEach(user => {
-          if (user.status === 'active') {
-            arrActive.push(user);
-          } else {
-            arrPassive.push(user);
-          }
-        })
-
-        userStatusOnline.textContent = `Online: ${arrActive.length}`;
-        userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
-
+      if (usersLength === users.length) {
+        return;
+      } else if (usersLength === users.length - 1) {
         const item = document.createElement('div');
         item.classList.add('user', users[users.length - 1].status === 'active' ? 'active' : 'passive');
 
@@ -61,22 +45,6 @@ export default function renderUsers(value) {
         allUsers.prepend(item);
 
       } else {
-        const userStatusOnline = document.querySelector('.user-status-online');
-        const userStatusOffnline = document.querySelector('.user-status-offline');
-        const arrActive = [];
-        const arrPassive = [];
-  
-        users.forEach(user => {
-          if (user.status === 'active') {
-            arrActive.push(user);
-          } else {
-            arrPassive.push(user);
-          }
-        })
-  
-        userStatusOnline.textContent = `Online: ${arrActive.length}`;
-        userStatusOffnline.textContent = `Offline: ${arrPassive.length}`;
-  
         const arrAllUsers = arrActive.concat(arrPassive);
         
         arrAllUsers.forEach(user => {

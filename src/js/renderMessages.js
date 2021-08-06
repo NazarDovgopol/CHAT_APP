@@ -11,7 +11,7 @@ export default function renderMessages(value) {
   fetch(`${API}/messages`)
     .then(data => data.json())
     .then(users => {
-      if (messagesLength == users.length) {
+      if (messagesLength === users.length) {
         return;
       } else {
         for (let i = messagesLength; i < users.length; i++) {
@@ -24,7 +24,7 @@ export default function renderMessages(value) {
           let datetime = user.datetime?.slice(user.datetime.indexOf('-')+1, user.datetime.indexOf('T')) || '';
           datetime += ' ' + (user.datetime?.slice(user.datetime.indexOf('.')-8, user.datetime.indexOf('.')-3) || '');
 
-          if (user.username == localUser.username) {
+          if (user.username === localUser.username) {
             item.classList.add('just-now');
             item.innerHTML = `
               <a href="#"><h4></h4></a>
@@ -44,7 +44,7 @@ export default function renderMessages(value) {
           }
 
           allMessage.append(item);
-          if (messagesLength != 0) {
+          if (messagesLength !== 0) {
             allMessage.scrollTo({
               top: 10000,
               behavior: "smooth"
