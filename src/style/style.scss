@@ -92,14 +92,6 @@ input, button, textarea, select {
   margin-top: 1rem;
 }
 
-.profile .edit {
-  margin-right: 1rem;
-}
-
-.profile .edit:hover {
-  background: url('../images/edit-hover.png');
-}
-
 .profile .logout:hover {
   background: url('../images/log-out-hover.png');
 }
@@ -173,6 +165,7 @@ input, button, textarea, select {
 .user .user-logo {
   width: 40px;
   margin-right: 1.2rem;
+  border-radius: 2rem;
 }
 
 /* correspondence */
@@ -180,7 +173,7 @@ input, button, textarea, select {
 /* all-chats */
 
 .main .correspondence {
-  margin: -16.5rem 0 0 2rem;
+  margin: -17.5rem 0 0 2rem;
   width: 75%;
 }
 
@@ -192,10 +185,13 @@ input, button, textarea, select {
 .all-chats .chat {
   display: flex;
   align-items: center;
+  justify-content: center;
+  min-height: 2.3rem;
+  width: 16.66666%;
   position: relative;
   border: 1px solid lightgrey;
-  border-radius: .2rem;
-  padding: .3rem 2rem;
+  border-radius: .5rem;
+  padding: .3rem 0;
   cursor: pointer;
   transition: background-color .3s;
 }
@@ -206,6 +202,13 @@ input, button, textarea, select {
 
 .all-chats .active-chat {
   background: lightgrey;
+}
+
+.all-chats .other-chat img.other-chat-avatar {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 2rem;
+  margin-right: .5rem;
 }
 
 .all-chats .other-chat button {
@@ -223,7 +226,7 @@ input, button, textarea, select {
   right: 0;
 }
 
-.all-chats .other-chat:hover img {
+.all-chats .other-chat:hover button img {
   width: 11px;
   height: 11px;
 }
@@ -246,13 +249,15 @@ input, button, textarea, select {
 
 .body::-webkit-scrollbar,
 .messages::-webkit-scrollbar,
-.all-info-users::-webkit-scrollbar {
+.all-info-users::-webkit-scrollbar,
+.enter-message textarea::-webkit-scrollbar {
   width: .4rem;
 }
 
 .body::-webkit-scrollbar-thumb,
 .messages::-webkit-scrollbar-thumb,
-.all-info-users::-webkit-scrollbar-thumb {
+.all-info-users::-webkit-scrollbar-thumb,
+.enter-message textarea::-webkit-scrollbar-thumb {
   background-color: #4ac4c5;
   border-radius: .5rem;
 }
@@ -312,6 +317,18 @@ input, button, textarea, select {
   border: 2px solid green;
 }
 
+.enter-message textarea.textArea-bold {
+  font-weight: bold;
+}
+
+.enter-message textarea.textArea-italick {
+  font-style: italic;
+}
+
+.enter-message textarea.textArea-underline {
+  text-decoration: underline;
+}
+
 .enter-message .modification {
   display: flex;
   justify-content: flex-end;
@@ -319,7 +336,8 @@ input, button, textarea, select {
   margin: .3rem 0 1rem 0;
 }
 
-.enter-message .modification img {
+.enter-message .modification button {
+  background-color: white;
   width: 25px;
   margin: 0 .2rem;
   padding: .2rem;
@@ -328,7 +346,7 @@ input, button, textarea, select {
   transition: background-color .3s;
 }
 
-.enter-message .modification img:hover {
+.enter-message .modification button:hover {
   background-color: lightgrey;
 }
 

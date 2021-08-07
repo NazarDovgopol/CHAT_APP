@@ -17,18 +17,23 @@ export default function renderForm() {
           </div>
           <div class="name">
             <label for="user-name-registration">Предумайте ваш логин</label>
-            <input type="text" id="user-name-registration" placeholder="Nazar Dovgopol" required>
+            <input type="text" id="user-name-registration"
+            placeholder="Nazar Dovgopol" required>
           </div>
           <div class="password">
             <label for="user-password-registration">Введите ваш пароль</label>
-            <input type="password" id="user-password-registration" placeholder="Минимум 4 символа" required>
+            <input type="password" id="user-password-registration"
+            placeholder="Минимум 4 символа" required>
           </div>
           <div class="confirm-password">
             <label for="user-password-confirm">Повторите пароль</label>
-            <input type="password" id="user-password-confirm" placeholder="Пароли должны совпадать" required>
+            <input type="password" id="user-password-confirm"
+            placeholder="Пароли должны совпадать" required>
           </div>
           <div class="check-registration">
-            <button type="submit" class="check-registration-button">Зарегистрироваться</button>
+            <button type="submit" class="check-registration-button">
+            Зарегистрироваться
+            </button>
           </div>
         </fieldset>
       </form>
@@ -43,11 +48,13 @@ export default function renderForm() {
           <legend>Вход</legend>
           <div class="name">
             <label for="user-name-login">Введите ваш логин</label>
-            <input type="text" id="user-name-login" placeholder="Nazar Dovgopol" required>
+            <input type="text" id="user-name-login"
+            placeholder="Nazar Dovgopol" required>
           </div>
           <div class="password">
             <label for="user-password-login">Введите ваш пароль</label>
-            <input type="password" id="user-password-login" placeholder="Введите ваш пароль" required>
+            <input type="password" id="user-password-login"
+            placeholder="Введите ваш пароль" required>
           </div>
           <div class="check-login">
             <button type="submit" class="check-login-button">Войти</button>
@@ -56,5 +63,5 @@ export default function renderForm() {
       </form>
       <p class="alert-error-hide"></p>
     </div>
-  `
-}
+  `;
+};
