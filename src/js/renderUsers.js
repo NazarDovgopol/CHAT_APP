@@ -32,7 +32,7 @@ const avatars = {
   '1': one,
   '01': nullOne,
   '2': two,
-  '01': nullTwo,
+  '02': nullTwo,
   '3': three,
   '03': nullThree,
   '4': four,
